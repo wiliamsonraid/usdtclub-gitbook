@@ -1,0 +1,435 @@
+:root {
+    --primary-bg: #0a0e27;
+    --secondary-bg: #111827;
+    --sidebar-bg: #1a1f35;
+    --accent-color: #00d4ff;
+    --accent-secondary: #00a8cc;
+    --text-primary: #ffffff;
+    --text-secondary: #a0aec0;
+    --border-color: #2d3748;
+    --card-bg: #1e293b;
+    --highlight-bg: rgba(0, 212, 255, 0.1);
+    --sidebar-width: 300px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: var(--primary-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    min-height: 100vh;
+}
+
+/* ========== SIDEBAR ========== */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--sidebar-bg);
+    border-right: 2px solid var(--accent-color);
+    overflow-y: auto;
+    z-index: 1000;
+    padding: 2rem 0;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: var(--sidebar-bg);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--accent-color), var(--accent-secondary));
+    border-radius: 3px;
+}
+
+.logo-container {
+    padding: 0 1.5rem 2rem 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.logo {
+    width: 180px;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
+}
+
+/* Navigation - Flat TetherClub Style */
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.nav-item:hover {
+    background: rgba(0, 212, 255, 0.05);
+    color: var(--accent-color);
+    border-left-color: var(--accent-color);
+}
+
+.nav-item.active {
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--accent-color);
+    border-left-color: var(--accent-color);
+}
+
+.nav-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* ========== MAIN CONTENT ========== */
+.main-content {
+    grid-column: 2;
+    margin-left: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.page {
+    display: none;
+    padding: 3rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== IMAGES ========== */
+.image-container {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.page-image {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 12px;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+}
+
+/* ========== TYPOGRAPHY ========== */
+.content-wrapper h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+.content-wrapper h2 {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.content-wrapper h3 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.content-wrapper p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+    text-align: left;
+}
+
+/* ========== STATS BOXES ========== */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+}
+
+.stat-box {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ========== FEATURE GRID ========== */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.feature-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+}
+
+.feature-card h3 {
+    color: var(--accent-color);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.feature-card p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+/* ========== HIGHLIGHT BOX ========== */
+.highlight-box {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent-color);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.highlight-box h3 {
+    color: var(--accent-color);
+    margin-top: 0;
+}
+
+.highlight-box p {
+    margin-bottom: 0.75rem;
+}
+
+.highlight-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* ========== TABLES ========== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    background: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background: var(--accent-color);
+    color: var(--primary-bg);
+}
+
+th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+tbody tr:hover {
+    background: rgba(0, 212, 255, 0.05);
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ========== STEPS LIST ========== */
+.steps-list {
+    margin: 2rem 0;
+}
+
+.step-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.step-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--accent-color);
+    color: var(--primary-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.step-content h3 {
+    margin-top: 0;
+    color: var(--accent-color);
+}
+
+.step-content p {
+    margin-bottom: 0.75rem;
+}
+
+.step-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 2px solid var(--accent-color);
+    }
+
+    .main-content {
+        grid-column: 1;
+        margin-left: 0;
+    }
+
+    .page {
+        padding: 2rem 1.5rem;
+    }
+
+    .content-wrapper h1 {
+        font-size: 2rem;
+    }
+
+    .content-wrapper h2 {
+        font-size: 1.5rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+
+    .content-wrapper h1 {
+        font-size: 1.75rem;
+    }
+
+    .content-wrapper h2 {
+        font-size: 1.3rem;
+    }
+
+    .page {
+        padding: 1.5rem 1rem;
+    }
+
+    .step-item {
+        flex-direction: column;
+    }
+
+    table {
+        font-size: 0.85rem;
+    }
+
+    th, td {
+        padding: 0.75rem 0.5rem;
+    }
+}
+
